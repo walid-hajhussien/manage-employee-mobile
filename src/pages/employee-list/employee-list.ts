@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { EmployeeProvider } from "../../providers/employee/employee";
+import { EmployeeModel } from "../../models/employee.model";
 
 /**
  * Generated class for the EmployeeListPage page.
@@ -10,16 +12,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-employee-list',
-  templateUrl: 'employee-list.html',
+  selector: "page-employee-list",
+  templateUrl: "employee-list.html",
 })
 export class EmployeeListPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public employeeList: EmployeeModel[];
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private employeeService: EmployeeProvider
+  ) {
+    this.employeeList = [];
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EmployeeListPage');
-  }
+    this.employeeList = this.employeeService.employeeList;
 
+    console.log(this.employeeList);
+  }
 }
