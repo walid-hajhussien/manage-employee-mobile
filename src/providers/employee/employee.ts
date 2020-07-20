@@ -57,4 +57,12 @@ export class EmployeeProvider implements StorageInterface {
     });
     this._list.splice(index, 1, updateCustomer);
   }
+
+  deleteCustomerById(id: string): EmployeeModel[] {
+    this._list = this._list.filter((value) => {
+      return value._id !== id;
+    });
+
+    return [...this._list];
+  }
 }
