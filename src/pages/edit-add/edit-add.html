@@ -7,7 +7,77 @@
 <ion-header>
   <ion-navbar>
     <ion-title>{{mode}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only clear (tap)="onSave()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding> </ion-content>
+<ion-content padding>
+  <form [formGroup]="formData">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-lg-6>
+          <ion-item>
+            <ion-label floating>Full Name</ion-label>
+            <ion-input formControlName="fullName" type="text"></ion-input>
+          </ion-item>
+          <small
+            padding
+            *ngIf="formData.controls.fullName.errors?.required && isClickSave"
+            >* Full Name is required</small
+          >
+          <small
+            padding
+            *ngIf="!formData.controls.fullName.errors?.required && formData.controls.fullName.errors?.seconName"
+            >* Second Name is required</small
+          >
+        </ion-col>
+        <ion-col col-12 col-lg-6>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input formControlName="email" type="text"></ion-input>
+          </ion-item>
+          <small
+            padding
+            *ngIf="formData.controls.email.errors?.email && isClickSave"
+            >* Email address is incorrect</small
+          >
+        </ion-col>
+        <ion-col col-12 col-lg-6>
+          <ion-item>
+            <ion-label floating>Phone</ion-label>
+            <ion-input formControlName="phone" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12 col-lg-6>
+          <ion-item>
+            <ion-label floating>Eye Color</ion-label>
+            <ion-input formControlName="eyeColor" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12 col-lg-6>
+          <ion-item>
+            <ion-label floating>Age</ion-label>
+            <ion-input formControlName="age" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12 col-lg-6>
+          <ion-item>
+            <ion-label floating>About</ion-label>
+            <ion-input formControlName="about" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12 col-lg-6>
+          <ion-item>
+            <ion-label floating>Address</ion-label>
+            <ion-textarea formControlName="address" row="2"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

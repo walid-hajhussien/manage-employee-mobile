@@ -3,7 +3,6 @@ import { NameModel } from "./name.model";
 export class EmployeeModel {
   public name: NameModel;
   constructor(
-    public _id: string,
     firstNmae: string,
     lastName: string,
     public age: number,
@@ -12,6 +11,7 @@ export class EmployeeModel {
     public phone: string,
     public address: string,
     public about: string,
+    public _id?: string,
     public index?: number,
     public guid?: string,
     public isActive?: boolean,

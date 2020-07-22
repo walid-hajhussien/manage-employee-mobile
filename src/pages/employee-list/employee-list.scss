@@ -1,11 +1,5 @@
 page-employee-list {
-  table .col {
-    background-color: lightgrey;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: royalblue;
-    color: white;
-    cursor: pointer;
+  ion-item-options > button {
+    width: 59px;
   }
 }

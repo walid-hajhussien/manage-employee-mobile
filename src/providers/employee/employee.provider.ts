@@ -14,7 +14,7 @@ import { Subject } from "rxjs/Subject";
   and Angular DI.
 */
 @Injectable()
-export class EmployeeProvider implements StorageInterface {
+export class EmployeeProvider {
   public listSubject: Subject<EmployeeModel[]>;
   private _list: EmployeeModel[];
   private _counter: number;
@@ -52,20 +52,20 @@ export class EmployeeProvider implements StorageInterface {
     );
   }
 
-  getCustomerById(id: string): EmployeeModel {
+  getEmployeeById(id: string): EmployeeModel {
     return [...this._list].find((value) => {
       return value._id === id;
     });
   }
 
-  addCustomer(newCustomer: EmployeeModel): void {
+  addEmployee(newCustomer: EmployeeModel): void {
     newCustomer._id = this._counter.toString();
     this._counter++;
     this._list.push(newCustomer);
     this.listSubject.next([...this._list]);
   }
 
-  editCustomer(updateCustomer: EmployeeModel): void {
+  editEmployee(updateCustomer: EmployeeModel): void {
     let index = this._list.findIndex((element) => {
       return element._id === updateCustomer._id;
     });
@@ -73,7 +73,7 @@ export class EmployeeProvider implements StorageInterface {
     this.listSubject.next([...this._list]);
   }
 
-  deleteCustomerById(id: string): void {
+  deleteEmployeeById(id: string): void {
     console.log(id);
     this._list = this._list.filter((value) => {
       return value._id !== id;

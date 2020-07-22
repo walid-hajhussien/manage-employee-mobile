@@ -2,6 +2,9 @@ import { Component } from "@angular/core";
 import { NavController, IonicPage } from "ionic-angular";
 import { EmployeeListPage } from "../employee-list/employee-list";
 
+@IonicPage({
+  name: "home",
+})
 @Component({
   selector: "page-home",
   templateUrl: "home.html",

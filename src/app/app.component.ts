@@ -3,14 +3,11 @@ import { Platform } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 
-import { HomePage } from "../pages/home/home";
 import { EmployeeProvider } from "../providers/employee/employee.provider";
 @Component({
   templateUrl: "app.html",
 })
 export class MyApp implements OnInit {
-  rootPage: any = HomePage;
-
   constructor(
     platform: Platform,
     statusBar: StatusBar,

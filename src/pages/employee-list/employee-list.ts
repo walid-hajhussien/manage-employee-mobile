@@ -1,5 +1,10 @@
 import { Component, ViewChild, OnInit, OnDestroy } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ItemSliding,
+} from "ionic-angular";
 import { EmployeeProvider } from "../../providers/employee/employee.provider";
 import { EmployeeModel } from "../../models/employee.model";
 import { EditAddPage } from "../edit-add/edit-add";
@@ -15,14 +20,13 @@ import * as _ from "lodash";
 
 @IonicPage({
   name: "employee-list",
+  defaultHistory: ["home"],
 })
 @Component({
   selector: "page-employee-list",
   templateUrl: "employee-list.html",
 })
 export class EmployeeListPage implements OnInit, OnDestroy {
-  @ViewChild("slidingItem") slidingItem;
-
   public employeeList: EmployeeModel[];
   public pushPage: any;
   public params: Object;
@@ -67,27 +71,26 @@ export class EmployeeListPage implements OnInit, OnDestroy {
 
   onDelete(employeeId: string) {
     console.log("delete");
-    this.employeeService.deleteCustomerById(employeeId);
+    this.employeeService.deleteEmployeeById(employeeId);
     this.search = "";
-    this.slidingItem.close();
   }
 
-  onEdit(employeId: string) {
+  onEdit(employeId: string, itemSliding: ItemSliding) {
     this.navCtrl.push("add-edit", {
       id: employeId,
     });
-    this.slidingItem.close();
+    itemSliding.close();
   }
 
-  onClickItem(slidingItem, item) {
-    console.log("item click!");
+  onClickItem(slidingItem: any) {
+    console.log("item click!", slidingItem._openAmount);
   }
 
   ngOnDestroy(): void {
     this.subjectList.unsubscribe();
   }
 
-  orderByList(key) {
+  orderByList() {
     // desc , asc
     this.employeeList = _.orderBy(
       this.employeeList,
