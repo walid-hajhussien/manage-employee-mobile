@@ -28,7 +28,7 @@
     </ion-row>
     <ion-row>
       <ion-col col-12>
-        <ion-list>
+        <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
           <ion-item-sliding
             #slidingItem
             *ngFor="let employee of employeeList; let i = index"

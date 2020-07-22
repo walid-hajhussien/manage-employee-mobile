@@ -4,6 +4,7 @@ import { EmployeeProvider } from "../../providers/employee/employee.provider";
 import { EmployeeModel } from "../../models/employee.model";
 import { EditAddPage } from "../edit-add/edit-add";
 import { Subscription } from "rxjs/Subscription";
+import * as _ from "lodash";
 
 /**
  * Generated class for the EmployeeListPage page.
@@ -42,13 +43,14 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     this.subjectList = this.employeeService.listSubject.subscribe(
       (employeeList: EmployeeModel[]) => {
         this.employeeList = employeeList;
-        console.log(this.employeeList);
+        console.log(this.employeeList, _);
       }
     );
   }
 
   ionViewDidLoad() {
     this.employeeList = this.employeeService.employeeList;
+    this.orderByList("name");
   }
 
   onSearch(event: any) {
@@ -83,5 +85,23 @@ export class EmployeeListPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subjectList.unsubscribe();
+  }
+
+  orderByList(key) {
+    // desc , asc
+    this.employeeList = _.orderBy(
+      this.employeeList,
+      function (value: EmployeeModel) {
+        console.log(value);
+        return value.name.first;
+      },
+      ["asc"]
+    );
+  }
+
+  reorderItems(indexes: any) {
+    let element = this.employeeList[indexes.from];
+    this.employeeList.splice(indexes.from, 1);
+    this.employeeList.splice(indexes.to, 0, element);
   }
 }
