@@ -9,7 +9,13 @@
     <ion-title>{{mode}}</ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only clear (tap)="onSave()">
+      <button
+        ion-button
+        icon-only
+        clear
+        (tap)="onSave()"
+        [disabled]="isClickSave && formData.invalid"
+      >
         <ion-icon name="checkmark"></ion-icon>
       </button>
     </ion-buttons>

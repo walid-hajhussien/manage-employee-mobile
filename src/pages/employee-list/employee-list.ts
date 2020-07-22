@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import {
   IonicPage,
   NavController,
@@ -54,7 +54,7 @@ export class EmployeeListPage implements OnInit, OnDestroy {
 
   ionViewDidLoad() {
     this.employeeList = this.employeeService.employeeList;
-    this.orderByList("name");
+    this.orderByList();
   }
 
   onSearch(event: any) {

@@ -33,7 +33,7 @@
             #slidingItem
             *ngFor="let employee of employeeList; let i = index"
           >
-            <ion-item #item (press)="onEdit(employee._id, slidingItem)">
+            <ion-item #item (tap)="onEdit(employee._id, slidingItem)">
               <ion-avatar item-start>
                 <img
                   src="https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png"
@@ -58,13 +58,6 @@
               >
                 <ion-icon name="trash"></ion-icon>
               </button>
-              <!-- <button
-                ion-button
-                expandable
-                (click)="onEdit(employee._id, slidingItem)"
-              >
-                <ion-icon name="create"></ion-icon>
-              </button> -->
             </ion-item-options>
           </ion-item-sliding>
         </ion-list>
