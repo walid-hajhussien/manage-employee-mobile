@@ -3,8 +3,9 @@ import { Injectable } from "@angular/core";
 import { EmployeeModel } from "../../models/employee.model";
 import { Observable } from "rxjs/Observable";
 import { StorageInterface } from "../../interfaces/storage.interface";
-import { tap, catchError } from "rxjs/operators";
+import { tap, catchError, map, filter } from "rxjs/operators";
 import { _throw } from "rxjs/observable/throw";
+import { Subject } from "rxjs/Subject";
 
 /*
   Generated class for the EmployeeProvider provider.
@@ -14,12 +15,13 @@ import { _throw } from "rxjs/observable/throw";
 */
 @Injectable()
 export class EmployeeProvider implements StorageInterface {
+  public listSubject: Subject<EmployeeModel[]>;
   private _list: EmployeeModel[];
   private _counter: number;
   constructor(public http: HttpClient) {
     this._list = [];
     this._counter = 1;
-    console.log("Hello EmployeeProvider Provider");
+    this.listSubject = new Subject();
   }
 
   get employeeList() {
@@ -29,6 +31,17 @@ export class EmployeeProvider implements StorageInterface {
   // get the data from a backend then saves the data to a local list
   setList(): Observable<EmployeeModel[]> {
     return this.http.get<EmployeeModel[]>("/assets/moch-data/data.json").pipe(
+      map((employees) => {
+        return employees.filter((employee) => {
+          return employee.isActive;
+        });
+      }),
+      map((employees: EmployeeModel[]) => {
+        return employees.map((employee) => {
+          employee.phone = employee.phone.replace(/[^0-9]/g, "").trim();
+          return employee;
+        });
+      }),
       tap((employees: EmployeeModel[]) => {
         this._list = employees;
       }),
@@ -49,6 +62,7 @@ export class EmployeeProvider implements StorageInterface {
     newCustomer._id = this._counter.toString();
     this._counter++;
     this._list.push(newCustomer);
+    this.listSubject.next([...this._list]);
   }
 
   editCustomer(updateCustomer: EmployeeModel): void {
@@ -56,13 +70,14 @@ export class EmployeeProvider implements StorageInterface {
       return element._id === updateCustomer._id;
     });
     this._list.splice(index, 1, updateCustomer);
+    this.listSubject.next([...this._list]);
   }
 
-  deleteCustomerById(id: string): EmployeeModel[] {
+  deleteCustomerById(id: string): void {
+    console.log(id);
     this._list = this._list.filter((value) => {
       return value._id !== id;
     });
-
-    return [...this._list];
+    this.listSubject.next([...this._list]);
   }
 }

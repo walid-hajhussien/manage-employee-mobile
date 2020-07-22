@@ -6,5 +6,5 @@ export interface StorageInterface {
   getCustomerById(id: string): EmployeeModel;
   addCustomer(newCustomer: EmployeeModel): void;
   editCustomer(updateCustomer: EmployeeModel): void;
-  deleteCustomerById(id: string): EmployeeModel[];
+  deleteCustomerById(id: string): void;
 }
