@@ -8,7 +8,6 @@ import {
 import { EmployeeModel } from "../../models/employee.model";
 import { EditAddPage } from "../edit-add/edit-add";
 import { Subscription } from "rxjs/Subscription";
-import * as _ from "lodash";
 import { EmployeeService } from "../../services/employee/employee.service";
 
 @IonicPage({
@@ -44,7 +43,6 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     this.subjectList = this.employeeService.listSubject.subscribe(
       (employeeList: EmployeeModel[]) => {
         this.employeeList = employeeList;
-        console.log(this.employeeList);
       }
     );
   }
@@ -82,18 +80,6 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     this.subjectList.unsubscribe();
   }
 
-  // testing
-  orderByList() {
-    // desc , asc
-    this.employeeList = _.orderBy(
-      this.employeeList,
-      function (value: EmployeeModel) {
-        return value.name.first;
-      },
-      ["asc"]
-    );
-  }
-
   reorderItems(indexes: any) {
     let element = this.employeeList[indexes.from];
     this.employeeList.splice(indexes.from, 1);
@@ -110,14 +96,13 @@ export class EmployeeListPage implements OnInit, OnDestroy {
   }
 
   onRefresh(event: any): void {
-    console.log(event);
-    setTimeout(() => {
+    this.employeeService.setList().subscribe((employeeList) => {
+      this.employeeList = employeeList;
       event.complete();
-    }, 2000);
+    });
   }
 
   onOrder() {
-    console.log(this.sortByColumn);
     if (this.sortByColumn === "") return;
     this.orderBy = this.orderBy === "asc" ? "des" : "asc";
   }
