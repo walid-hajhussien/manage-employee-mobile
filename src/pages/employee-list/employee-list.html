@@ -22,10 +22,27 @@
     </ion-row>
     <ion-row>
       <ion-col col-12 col-lg-8 offset-lg-2>
-        <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
+        <ion-list>
+          <ion-item>
+            <ion-label>Order By</ion-label>
+            <ion-select [(ngModel)]="orderBy">
+              <ion-option value="name">Name</ion-option>
+              <ion-option value="phone">Phone</ion-option>
+              <ion-option value="email">Email</ion-option>
+              <ion-option value="address">Address</ion-option>
+              <ion-option value="manual">Manual</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col col-12 col-lg-8 offset-lg-2>
+        <ion-list
+          [reorder]="orderBy==='manual'"
+          (ionItemReorder)="reorderItems($event)"
+        >
           <ion-item-sliding
             #slidingItem
-            *ngFor="let employee of employeeList; let i = index"
+            *ngFor="let employee of employeeList | sortBy:orderBy; let i = index"
           >
             <ion-item #item (tap)="onEdit(employee._id, slidingItem)">
               <ion-avatar item-start>

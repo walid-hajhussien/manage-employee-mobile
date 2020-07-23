@@ -25,6 +25,7 @@ export class EmployeeListPage implements OnInit, OnDestroy {
   public params: Object;
   public search: string;
   private subjectList: Subscription;
+  public orderBy: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -34,6 +35,7 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     this.pushPage = EditAddPage;
     this.search = "";
     this.params = { id: "New" };
+    this.orderBy = "name";
   }
 
   ngOnInit(): void {
@@ -47,7 +49,6 @@ export class EmployeeListPage implements OnInit, OnDestroy {
 
   ionViewDidLoad() {
     this.employeeList = this.employeeService.employeeList;
-    this.orderByList();
   }
 
   onSearch(_event: any): EmployeeModel[] {
@@ -79,12 +80,12 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     this.subjectList.unsubscribe();
   }
 
+  // testing
   orderByList() {
     // desc , asc
     this.employeeList = _.orderBy(
       this.employeeList,
       function (value: EmployeeModel) {
-        console.log(value);
         return value.name.first;
       },
       ["asc"]
