@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, IonicPage } from "ionic-angular";
-import { EmployeeListPage } from "../employee-list/employee-list";
+import { IonicPage } from "ionic-angular";
 
 @IonicPage({
   name: "home",
@@ -10,13 +9,5 @@ import { EmployeeListPage } from "../employee-list/employee-list";
   templateUrl: "home.html",
 })
 export class HomePage {
-  public pushPage: any;
-  constructor(public navCtrl: NavController) {
-    this.pushPage = EmployeeListPage;
-  }
-
-  onNavigate() {
-    console.log("click");
-    this.navCtrl.push("EmployeeListPage");
-  }
+  constructor() {}
 }

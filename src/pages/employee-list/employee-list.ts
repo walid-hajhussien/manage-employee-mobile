@@ -11,13 +11,6 @@ import { EditAddPage } from "../edit-add/edit-add";
 import { Subscription } from "rxjs/Subscription";
 import * as _ from "lodash";
 
-/**
- * Generated class for the EmployeeListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage({
   name: "employee-list",
   defaultHistory: ["home"],
@@ -57,7 +50,7 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     this.orderByList();
   }
 
-  onSearch(event: any) {
+  onSearch(_event: any): EmployeeModel[] {
     this.employeeList = this.employeeService.employeeList;
 
     if (this.search && this.search.trim().length > 0) {
@@ -67,10 +60,10 @@ export class EmployeeListPage implements OnInit, OnDestroy {
         );
       });
     }
+    return this.employeeList;
   }
 
   onDelete(employeeId: string) {
-    console.log("delete");
     this.employeeService.deleteEmployeeById(employeeId);
     this.search = "";
   }
@@ -80,10 +73,6 @@ export class EmployeeListPage implements OnInit, OnDestroy {
       id: employeId,
     });
     itemSliding.close();
-  }
-
-  onClickItem(slidingItem: any) {
-    console.log("item click!", slidingItem._openAmount);
   }
 
   ngOnDestroy(): void {

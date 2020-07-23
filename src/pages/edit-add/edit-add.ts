@@ -3,13 +3,7 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeModel } from "../../models/employee.model";
 import { EmployeeProvider } from "../../providers/employee/employee.provider";
-
-/**
- * Generated class for the EditAddPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ValidatorError } from "../../interfaces/validator.interface";
 
 @IonicPage({
   name: "add-edit",
@@ -71,11 +65,8 @@ export class EditAddPage implements OnInit {
     }
   }
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad EditAddPage", this.id);
-  }
-
-  onSave() {
+  // Edit or Add the new employee
+  onSave(): void {
     this.isClickSave = true;
     if (this.formData.invalid) return;
     let values = this.formData.value;
@@ -110,8 +101,8 @@ export class EditAddPage implements OnInit {
     }
   }
 
-  // custom Validator for the second name
-  secondNameValidator(control: FormControl): { [name: string]: boolean } {
+  // custom validator for the second name
+  secondNameValidator(control: FormControl): ValidatorError {
     if (!control.value) return null;
     if (!control.value.split(" ")[1]) {
       return { seconName: true };
