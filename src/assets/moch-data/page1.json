@@ -3,7 +3,7 @@
     "_id": "58b7eba4bbe0191fa69bca43",
     "index": 0,
     "guid": "72f5559b-ae61-4cda-840c-d5432a679d60",
-    "isActive": false,
+    "isActive": true,
     "balance": "$2,336.48",
     "picture": "http://placehold.it/32x32",
     "age": 27,
@@ -20,13 +20,7 @@
     "registered": "Wednesday, January 4, 2017 2:38 AM",
     "latitude": "17.074715",
     "longitude": "156.268461",
-    "tags": [
-      "esse",
-      "est",
-      "dolor",
-      "elit",
-      "enim"
-    ],
+    "tags": ["esse", "est", "dolor", "elit", "enim"],
     "greeting": "Hello, Rosalind! You have 5 unread messages.",
     "favoriteFruit": "apple"
   },
@@ -51,13 +45,7 @@
     "registered": "Sunday, April 19, 2015 11:53 PM",
     "latitude": "82.438873",
     "longitude": "4.397654",
-    "tags": [
-      "quis",
-      "aliquip",
-      "commodo",
-      "ullamco",
-      "ad"
-    ],
+    "tags": ["quis", "aliquip", "commodo", "ullamco", "ad"],
     "greeting": "Hello, Sharon! You have 8 unread messages.",
     "favoriteFruit": "banana"
   },
@@ -82,13 +70,7 @@
     "registered": "Tuesday, November 4, 2014 8:45 PM",
     "latitude": "39.148089",
     "longitude": "54.217425",
-    "tags": [
-      "eu",
-      "eu",
-      "id",
-      "nostrud",
-      "amet"
-    ],
+    "tags": ["eu", "eu", "id", "nostrud", "amet"],
     "greeting": "Hello, Becky! You have 7 unread messages.",
     "favoriteFruit": "banana"
   },
@@ -113,13 +95,7 @@
     "registered": "Wednesday, August 13, 2014 11:46 PM",
     "latitude": "-58.913939",
     "longitude": "101.740385",
-    "tags": [
-      "magna",
-      "anim",
-      "commodo",
-      "ea",
-      "amet"
-    ],
+    "tags": ["magna", "anim", "commodo", "ea", "amet"],
     "greeting": "Hello, Lorene! You have 10 unread messages.",
     "favoriteFruit": "strawberry"
   },
@@ -144,13 +120,7 @@
     "registered": "Thursday, August 6, 2015 4:25 PM",
     "latitude": "-53.997773",
     "longitude": "166.881537",
-    "tags": [
-      "ut",
-      "non",
-      "proident",
-      "labore",
-      "sunt"
-    ],
+    "tags": ["ut", "non", "proident", "labore", "sunt"],
     "greeting": "Hello, Gladys! You have 9 unread messages.",
     "favoriteFruit": "apple"
   },
@@ -175,13 +145,7 @@
     "registered": "Friday, May 29, 2015 11:34 AM",
     "latitude": "18.083298",
     "longitude": "-136.35927",
-    "tags": [
-      "commodo",
-      "dolor",
-      "veniam",
-      "commodo",
-      "consequat"
-    ],
+    "tags": ["commodo", "dolor", "veniam", "commodo", "consequat"],
     "greeting": "Hello, Knight! You have 10 unread messages.",
     "favoriteFruit": "apple"
   },
@@ -206,13 +170,7 @@
     "registered": "Saturday, January 25, 2014 4:58 PM",
     "latitude": "-17.548394",
     "longitude": "115.753283",
-    "tags": [
-      "voluptate",
-      "sit",
-      "ullamco",
-      "amet",
-      "ex"
-    ],
+    "tags": ["voluptate", "sit", "ullamco", "amet", "ex"],
     "greeting": "Hello, Beryl! You have 8 unread messages.",
     "favoriteFruit": "banana"
   },
@@ -237,13 +195,7 @@
     "registered": "Friday, April 15, 2016 10:17 PM",
     "latitude": "60.747873",
     "longitude": "-18.469114",
-    "tags": [
-      "aliquip",
-      "fugiat",
-      "eiusmod",
-      "incididunt",
-      "adipisicing"
-    ],
+    "tags": ["aliquip", "fugiat", "eiusmod", "incididunt", "adipisicing"],
     "greeting": "Hello, Vincent! You have 6 unread messages.",
     "favoriteFruit": "apple"
   }

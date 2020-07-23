@@ -88,11 +88,21 @@ export class EmployeeListPage implements OnInit, OnDestroy {
 
   // for testing
   doInfinite(infiniteScroll): void {
-    setTimeout(() => {
-      // let newLoaded = this.employeeService.nextEmployee;
-      // this.employeeList = [...this.employeeList, ...newLoaded];
+    if (this.employeeService.pageNumber < 2) {
+      this.employeeService.getNextPage().subscribe((list) => {
+        console.log(list);
+        this.employeeList.push(...list);
+        infiniteScroll.complete();
+      });
+    } else {
       infiniteScroll.complete();
-    }, 2000);
+    }
+
+    // setTimeout(() => {
+    //   // let newLoaded = this.employeeService.nextEmployee;
+    //   // this.employeeList = [...this.employeeList, ...newLoaded];
+    //   infiniteScroll.complete();
+    // }, 2000);
   }
 
   onRefresh(event: any): void {

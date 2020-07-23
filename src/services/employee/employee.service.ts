@@ -11,36 +11,21 @@ export class EmployeeService {
   public listSubject: Subject<EmployeeModel[]>;
   private _list: EmployeeModel[];
   private _counter: number;
-  private loadEmployeeCount: number;
+  public pageNumber: number;
   constructor(public http: HttpClient) {
     this._list = [];
     this._counter = 1;
     this.listSubject = new Subject();
-    this.loadEmployeeCount = 0;
+    this.pageNumber = 1;
   }
 
   get employeeList() {
     return [...this._list];
   }
 
-  // load the next 4 employee
-  get nextEmployee() {
-    let loadList = [...this._list].slice(
-      this.loadEmployeeCount,
-      this.loadEmployeeCount + 4
-    );
-    this.loadEmployeeCount = this.loadEmployeeCount + 4;
-    return loadList;
-  }
-
-  // get the loaded employee
-  get currentEmployeeLoad() {
-    return [...this._list].slice(0, this.loadEmployeeCount);
-  }
-
   // get the data from a backend then saves the data to a local list
   setList(): Observable<EmployeeModel[]> {
-    return this.http.get<EmployeeModel[]>("/assets/moch-data/data.json").pipe(
+    return this.http.get<EmployeeModel[]>(`/assets/moch-data/page1.json`).pipe(
       map((employees) => {
         return employees.filter((employee) => {
           return employee.isActive;
@@ -53,6 +38,7 @@ export class EmployeeService {
         });
       }),
       tap((employees: EmployeeModel[]) => {
+        this.pageNumber++;
         this._list = employees;
       }),
       catchError((error: HttpErrorResponse) => {
@@ -72,7 +58,6 @@ export class EmployeeService {
     newCustomer._id = this._counter.toString();
     this._counter++;
     this._list.push(newCustomer);
-    this.loadEmployeeCount--;
     this.listSubject.next([...this._list]);
   }
 
@@ -90,5 +75,24 @@ export class EmployeeService {
       return value._id !== id;
     });
     this.listSubject.next([...this._list]);
+  }
+
+  getNextPage(): Observable<EmployeeModel[]> {
+    return this.http
+      .get<EmployeeModel[]>(`/assets/moch-data/page${this.pageNumber}.json`)
+      .pipe(
+        map((employees) => {
+          return employees.filter((employee) => {
+            return employee.isActive;
+          });
+        }),
+        map((employees: EmployeeModel[]) => {
+          return employees.map((employee) => {
+            employee.phone = employee.phone.replace(/[^0-9]/g, "").trim();
+            this.pageNumber++;
+            return employee;
+          });
+        })
+      );
   }
 }
