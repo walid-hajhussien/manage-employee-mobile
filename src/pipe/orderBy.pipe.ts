@@ -9,20 +9,20 @@ export class SortByPipe implements PipeTransform {
     column: string = "",
     order: "asc" | "des" = "asc"
   ): EmployeeModel[] {
-    console.log(column);
-    if (values.length <= 1 || !column || column === "" || column === "manual") {
+    console.log(order);
+    if (values.length <= 1 || !column || column === "") {
       return values;
     }
 
-    return _.orderBy(
-      values,
-      (employee: EmployeeModel) => {
-        if (column === "name") {
-          return employee.name.first;
-        }
-        return employee[column];
-      },
-      [order]
-    );
+    let sortedValues = _.orderBy(values, (employee: EmployeeModel) => {
+      if (column === "name") {
+        return employee.name.first;
+      }
+      return employee[column];
+    });
+
+    console.log(sortedValues);
+
+    return order === "asc" ? sortedValues : sortedValues.reverse();
   }
 }

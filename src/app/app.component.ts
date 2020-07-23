@@ -3,7 +3,7 @@ import { Platform } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 
-import { EmployeeProvider } from "../providers/employee/employee.provider";
+import { EmployeeService } from "../services/employee/employee.service";
 @Component({
   templateUrl: "app.html",
 })
@@ -12,7 +12,7 @@ export class MyApp implements OnInit {
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    private employeeService: EmployeeProvider
+    private employeeService: EmployeeService
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

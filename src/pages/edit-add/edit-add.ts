@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeModel } from "../../models/employee.model";
-import { EmployeeProvider } from "../../providers/employee/employee.provider";
 import { ValidatorError } from "../../interfaces/validator.interface";
+import { EmployeeService } from "../../services/employee/employee.service";
 
 @IonicPage({
   name: "add-edit",
@@ -23,7 +23,7 @@ export class EditAddPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private employeeService: EmployeeProvider
+    private employeeService: EmployeeService
   ) {
     this.isClickSave = false;
   }

@@ -7,7 +7,7 @@ import { _throw } from "rxjs/observable/throw";
 import { Subject } from "rxjs/Subject";
 
 @Injectable()
-export class EmployeeProvider {
+export class EmployeeService {
   public listSubject: Subject<EmployeeModel[]>;
   private _list: EmployeeModel[];
   private _counter: number;

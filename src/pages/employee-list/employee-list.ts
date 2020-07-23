@@ -5,11 +5,11 @@ import {
   NavParams,
   ItemSliding,
 } from "ionic-angular";
-import { EmployeeProvider } from "../../providers/employee/employee.provider";
 import { EmployeeModel } from "../../models/employee.model";
 import { EditAddPage } from "../edit-add/edit-add";
 import { Subscription } from "rxjs/Subscription";
 import * as _ from "lodash";
+import { EmployeeService } from "../../services/employee/employee.service";
 
 @IonicPage({
   name: "employee-list",
@@ -26,16 +26,18 @@ export class EmployeeListPage implements OnInit, OnDestroy {
   public search: string;
   private subjectList: Subscription;
   public orderBy: string;
+  public sortByColumn: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private employeeService: EmployeeProvider
+    private employeeService: EmployeeService
   ) {
     this.employeeList = [];
     this.pushPage = EditAddPage;
     this.search = "";
     this.params = { id: "New" };
-    this.orderBy = "name";
+    this.sortByColumn = "name";
+    this.orderBy = "asc";
   }
 
   ngOnInit(): void {
@@ -110,5 +112,11 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     setTimeout(() => {
       event.complete();
     }, 2000);
+  }
+
+  onOrder() {
+    console.log(this.sortByColumn);
+    if (this.sortByColumn === "") return;
+    this.orderBy = this.orderBy === "asc" ? "des" : "asc";
   }
 }

@@ -3,10 +3,9 @@ import { ErrorHandler, NgModule } from "@angular/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { StatusBar } from "@ionic-native/status-bar";
-
 import { MyApp } from "./app.component";
-import { EmployeeProvider } from "../providers/employee/employee.provider";
 import { HttpClientModule } from "@angular/common/http";
+import { EmployeeService } from "../services/employee/employee.service";
 
 @NgModule({
   declarations: [MyApp],
@@ -17,7 +16,7 @@ import { HttpClientModule } from "@angular/common/http";
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    EmployeeProvider,
+    EmployeeService,
   ],
 })
 export class AppModule {}
