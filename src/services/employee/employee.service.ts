@@ -11,14 +11,31 @@ export class EmployeeService {
   public listSubject: Subject<EmployeeModel[]>;
   private _list: EmployeeModel[];
   private _counter: number;
+  private loadEmployeeCount: number;
   constructor(public http: HttpClient) {
     this._list = [];
     this._counter = 1;
     this.listSubject = new Subject();
+    this.loadEmployeeCount = 0;
   }
 
   get employeeList() {
     return [...this._list];
+  }
+
+  // load the next 4 employee
+  get nextEmployee() {
+    let loadList = [...this._list].slice(
+      this.loadEmployeeCount,
+      this.loadEmployeeCount + 4
+    );
+    this.loadEmployeeCount = this.loadEmployeeCount + 4;
+    return loadList;
+  }
+
+  // get the loaded employee
+  get currentEmployeeLoad() {
+    return [...this._list].slice(0, this.loadEmployeeCount);
   }
 
   // get the data from a backend then saves the data to a local list
@@ -55,6 +72,7 @@ export class EmployeeService {
     newCustomer._id = this._counter.toString();
     this._counter++;
     this._list.push(newCustomer);
+    this.loadEmployeeCount--;
     this.listSubject.next([...this._list]);
   }
 

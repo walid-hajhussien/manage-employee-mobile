@@ -44,7 +44,7 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     this.subjectList = this.employeeService.listSubject.subscribe(
       (employeeList: EmployeeModel[]) => {
         this.employeeList = employeeList;
-        console.log(this.employeeList, _);
+        console.log(this.employeeList);
       }
     );
   }
@@ -103,6 +103,8 @@ export class EmployeeListPage implements OnInit, OnDestroy {
   // for testing
   doInfinite(infiniteScroll): void {
     setTimeout(() => {
+      // let newLoaded = this.employeeService.nextEmployee;
+      // this.employeeList = [...this.employeeList, ...newLoaded];
       infiniteScroll.complete();
     }, 2000);
   }
