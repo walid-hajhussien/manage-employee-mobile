@@ -99,9 +99,16 @@ export class EmployeeListPage implements OnInit, OnDestroy {
   }
 
   // for testing
-  doInfinite(infiniteScroll) {
+  doInfinite(infiniteScroll): void {
     setTimeout(() => {
       infiniteScroll.complete();
+    }, 2000);
+  }
+
+  onRefresh(event: any): void {
+    console.log(event);
+    setTimeout(() => {
+      event.complete();
     }, 2000);
   }
 }

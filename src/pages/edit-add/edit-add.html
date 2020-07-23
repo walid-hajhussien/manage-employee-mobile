@@ -32,7 +32,7 @@
           >
           <small
             padding
-            *ngIf="!formData.controls.fullName.errors?.required && formData.controls.fullName.errors?.seconName"
+            *ngIf="!formData.controls.fullName.errors?.required && formData.controls.fullName.errors?.seconName && isClickSave"
             >* Second Name is required</small
           >
         </ion-col>
