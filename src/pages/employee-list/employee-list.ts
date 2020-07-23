@@ -96,4 +96,11 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     this.employeeList.splice(indexes.from, 1);
     this.employeeList.splice(indexes.to, 0, element);
   }
+
+  // for testing
+  doInfinite(infiniteScroll) {
+    setTimeout(() => {
+      infiniteScroll.complete();
+    }, 2000);
+  }
 }

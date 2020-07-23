@@ -8,7 +8,7 @@ import { ValidatorError } from "../../interfaces/validator.interface";
 @IonicPage({
   name: "add-edit",
   segment: "add-edit/:id",
-  defaultHistory: ["employee-list"],
+  defaultHistory: ["home"],
 })
 @Component({
   selector: "page-edit-add",
