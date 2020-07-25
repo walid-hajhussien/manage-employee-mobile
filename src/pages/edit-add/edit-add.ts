@@ -5,6 +5,7 @@ import { EmployeeModel } from "../../models/employee.model";
 
 import { EmployeeService } from "../../services/employee/employee.service";
 import { secondNameValidator } from "../../validator/secondName.validatoe";
+import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 
 @IonicPage({
   name: "add-edit",
@@ -24,7 +25,8 @@ export class EditAddPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private camera: Camera
   ) {
     this.isClickSave = false;
   }
@@ -52,6 +54,7 @@ export class EditAddPage implements OnInit {
       eyeColor: new FormControl(this.employee ? this.employee.eyeColor : null),
       age: new FormControl(this.employee ? this.employee.age : null),
       about: new FormControl(this.employee ? this.employee.about : null),
+      picture: new FormControl(this.employee ? this.employee.picture : null),
     });
   }
 
@@ -88,5 +91,26 @@ export class EditAddPage implements OnInit {
       this.employeeService.editEmployee(this.employee);
       this.navCtrl.pop();
     }
+  }
+
+  onAddPicture() {
+    const options: CameraOptions = {
+      quality: 50, // picture quality
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+    };
+
+    console.log(this.camera.getPicture);
+
+    // this.camera.getPicture(options).then(
+    //   (imageData) => {
+    //     console.log(imageData);
+    //     // this.base64Image = "data:image/jpeg;base64," + imageData;
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
   }
 }

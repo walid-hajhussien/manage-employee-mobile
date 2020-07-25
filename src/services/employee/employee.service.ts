@@ -2,8 +2,9 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { EmployeeModel } from "../../models/employee.model";
 import { Observable } from "rxjs/Observable";
-import { tap, catchError, map } from "rxjs/operators";
+import { tap, catchError, map, switchMap } from "rxjs/operators";
 import { _throw } from "rxjs/observable/throw";
+import { of } from "rxjs/observable/of";
 import { Subject } from "rxjs/Subject";
 
 @Injectable()
@@ -27,15 +28,13 @@ export class EmployeeService {
   setList(): Observable<EmployeeModel[]> {
     return this.http.get<EmployeeModel[]>(`/assets/moch-data/page1.json`).pipe(
       map((employees) => {
-        return employees.filter((employee) => {
-          return employee.isActive;
-        });
-      }),
-      map((employees: EmployeeModel[]) => {
-        return employees.map((employee) => {
-          employee.phone = employee.phone.replace(/[^0-9]/g, "").trim();
-          return employee;
-        });
+        return employees.reduce((result, employee) => {
+          if (employee.isActive) {
+            employee.phone = employee.phone.replace(/[^0-9]/g, "").trim();
+            result.push(employee);
+          }
+          return result;
+        }, []);
       }),
       tap((employees: EmployeeModel[]) => {
         this.pageNumber++;
