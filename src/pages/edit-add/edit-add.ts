@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { IonicPage, NavController, NavParams, Thumbnail } from "ionic-angular";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeModel } from "../../models/employee.model";
 
 import { EmployeeService } from "../../services/employee/employee.service";
 import { secondNameValidator } from "../../validator/secondName.validatoe";
-import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
+import { Camera, CameraOptions } from "@ionic-native/camera";
 
 @IonicPage({
   name: "add-edit",
@@ -101,16 +101,14 @@ export class EditAddPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE,
     };
 
-    console.log(this.camera.getPicture);
-
-    // this.camera.getPicture(options).then(
-    //   (imageData) => {
-    //     console.log(imageData);
-    //     // this.base64Image = "data:image/jpeg;base64," + imageData;
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //   }
-    // );
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        console.log(imageData);
+        // this.base64Image = "data:image/jpeg;base64," + imageData;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

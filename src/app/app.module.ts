@@ -6,7 +6,7 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { MyApp } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { EmployeeService } from "../services/employee/employee.service";
-import { Camera } from "@ionic-native/camera/ngx";
+import { Camera } from "@ionic-native/camera";
 
 @NgModule({
   declarations: [MyApp],
