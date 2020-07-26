@@ -24,6 +24,9 @@
       [listValue]="employeeList"
       (editList)="onEdit($event)"
       (deleteList)="onDelete($event)"
+      [sortByColumn]="'name'"
+      [orderBy]="'asc'"
+      [searchColumn]="'address'"
     ></list>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>

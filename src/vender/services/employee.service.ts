@@ -2,9 +2,8 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { EmployeeModel } from "../models/employee.model";
 import { Observable } from "rxjs/Observable";
-import { tap, catchError, map, switchMap } from "rxjs/operators";
+import { tap, catchError, map } from "rxjs/operators";
 import { _throw } from "rxjs/observable/throw";
-import { of } from "rxjs/observable/of";
 import { Subject } from "rxjs/Subject";
 
 @Injectable()

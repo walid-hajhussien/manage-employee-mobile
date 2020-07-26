@@ -40,18 +40,18 @@
     >
       <ion-item-sliding
         #slidingItem
-        *ngFor="let employee of renderList | sortBy:sortByColumn:orderBy; let i = index"
+        *ngFor="let value of renderList | sortBy:sortByColumn:orderBy; let i = index"
       >
-        <ion-item #item (tap)="onEdit(employee._id, slidingItem)">
+        <ion-item #item (tap)="onEdit(value._id, slidingItem)">
           <ion-avatar item-start>
-            <img [src]="employee.picture" />
+            <img [src]="value.picture" />
           </ion-avatar>
-          <h2>{{employee.name.first + ' ' + employee.name.last}}</h2>
-          <p><ion-icon name="mail"></ion-icon> {{employee.email |uppercase}}</p>
-          <p><ion-icon name="call"></ion-icon> {{employee.phone}}</p>
+          <h2>{{value.name.first + ' ' + value.name.last}}</h2>
+          <p><ion-icon name="mail"></ion-icon> {{value.email |uppercase}}</p>
+          <p><ion-icon name="call"></ion-icon> {{value.phone}}</p>
           <p>
             <ion-icon name="navigate"></ion-icon>
-            {{employee.address}}
+            {{value.address}}
           </p>
         </ion-item>
         <ion-item-options side="right">
@@ -59,7 +59,7 @@
             ion-button
             expandable
             color="danger"
-            (tap)="onDelete(employee._id)"
+            (tap)="onDelete(value._id)"
           >
             <ion-icon name="trash"></ion-icon>
           </button>

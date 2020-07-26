@@ -93,7 +93,7 @@ export class EditAddPage implements OnInit {
     this.navCtrl.pop();
   }
 
-  // camera
+  // take photo using camera
   onAddPicture() {
     const options: CameraOptions = {
       quality: 50,

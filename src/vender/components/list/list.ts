@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { EmployeeModel } from "../../models/employee.model";
+import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
 import { ItemSliding } from "ionic-angular";
 
 @Component({
@@ -7,31 +6,32 @@ import { ItemSliding } from "ionic-angular";
   templateUrl: "list.html",
 })
 export class ListComponent {
-  @Input() set listValue(values: EmployeeModel[]) {
+  @Input() set listValue(values: any) {
     this.mainList = values;
     this.renderList = [...this.mainList];
   }
 
   @Output() editList: EventEmitter<string> = new EventEmitter<string>();
   @Output() deleteList: EventEmitter<string> = new EventEmitter<string>();
+  @Input() sortByColumn: string;
+  @Input() orderBy: "asc" | "desc";
+  @Input() searchColumn: string;
 
-  public mainList: EmployeeModel[];
-  public renderList: EmployeeModel[];
+  public mainList: any;
+  public renderList: any;
   public search: string;
-  public sortByColumn: string;
-  public orderBy: string;
-  constructor() {
-    this.sortByColumn = "name";
-    this.orderBy = "asc";
-  }
 
-  onSearch(_event: any): EmployeeModel[] {
+  constructor() {}
+
+  onSearch(_event: any): any {
     this.renderList = [...this.mainList];
 
     if (this.search && this.search.trim().length > 0) {
       this.renderList = this.renderList.filter((employee) => {
         return (
-          employee.address.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+          employee[this.searchColumn]
+            .toLowerCase()
+            .indexOf(this.search.toLowerCase()) > -1
         );
       });
     }
@@ -40,7 +40,7 @@ export class ListComponent {
 
   onOrder() {
     if (this.sortByColumn === "") return;
-    this.orderBy = this.orderBy === "asc" ? "des" : "asc";
+    this.orderBy = this.orderBy === "asc" ? "desc" : "asc";
   }
 
   reorderItems(indexes: any) {
