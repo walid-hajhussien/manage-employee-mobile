@@ -13,9 +13,9 @@ export class ListComponent {
 
   @Output() editList: EventEmitter<string> = new EventEmitter<string>();
   @Output() deleteList: EventEmitter<string> = new EventEmitter<string>();
-  @Input() sortByColumn: string;
-  @Input() orderBy: "asc" | "desc";
-  @Input() searchColumn: string;
+  @Input() sortByColumn: string = "name";
+  @Input() orderBy: "asc" | "desc" = "asc";
+  @Input() searchColumn: string = "address";
 
   public mainList: any;
   public renderList: any;
