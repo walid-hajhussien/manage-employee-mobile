@@ -57,20 +57,8 @@ export class EmployeeListPage implements OnInit, OnDestroy {
     this.subjectList.unsubscribe();
   }
 
-  // for testing
   doInfinite(infiniteScroll): void {
-    // if (this.employeeService.pageNumber < 2) {
-    //   this.employeeService.getNextPage().subscribe((list) => {
-    //     this.employeeList.push(...list);
-    //     infiniteScroll.complete();
-    //   });
-    // } else {
-    //   infiniteScroll.complete();
-    // }
-
     setTimeout(() => {
-      // let newLoaded = this.employeeService.nextEmployee;
-      // this.employeeList = [...this.employeeList, ...newLoaded];
       infiniteScroll.complete();
     }, 2000);
   }

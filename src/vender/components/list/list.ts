@@ -2,12 +2,6 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { EmployeeModel } from "../../models/employee.model";
 import { ItemSliding } from "ionic-angular";
 
-/**
- * Generated class for the ListComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: "list",
   templateUrl: "list.html",

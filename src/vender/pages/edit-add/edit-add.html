@@ -71,19 +71,20 @@
             <ion-input formControlName="about" type="text"></ion-input>
           </ion-item>
         </ion-col>
-        <ion-col col-12 col-lg-6>
-          <ion-item>
-            <ion-label floating>Picture</ion-label>
-            <ion-input formControlName="picture" type="text"></ion-input>
-            <button ion-button icon-only item-right (click)="onAddPicture()">
-              <ion-icon name="camera"></ion-icon>
-            </button>
-          </ion-item>
-        </ion-col>
+
         <ion-col col-12 col-lg-6>
           <ion-item>
             <ion-label floating>Address</ion-label>
             <ion-textarea formControlName="address" row="2"></ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12 col-lg-6>
+          <ion-item>
+            <ion-label floating>Picture</ion-label>
+            <ion-input formControlName="picture" type="text"></ion-input>
+            <button ion-button icon-only item-right (tap)="onAddPicture()">
+              <ion-icon name="camera"></ion-icon>
+            </button>
           </ion-item>
         </ion-col>
       </ion-row>

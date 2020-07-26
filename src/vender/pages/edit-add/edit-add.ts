@@ -67,7 +67,6 @@ export class EditAddPage implements OnInit {
     });
   }
 
-  // Edit or Add new employee
   onSave(): void {
     this.isClickSave = true;
     if (this.formData.invalid) return;
@@ -97,7 +96,7 @@ export class EditAddPage implements OnInit {
   // camera
   onAddPicture() {
     const options: CameraOptions = {
-      quality: 50, // picture quality
+      quality: 50,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -105,14 +104,13 @@ export class EditAddPage implements OnInit {
 
     this.camera.getPicture(options).then(
       (imageData) => {
-        console.log(imageData);
         this.employee.picture = "data:image/jpeg;base64," + imageData;
         this.formData.patchValue({
           picture: this.employee.picture,
         });
       },
-      (err) => {
-        console.log(err);
+      (_err) => {
+        return;
       }
     );
   }
