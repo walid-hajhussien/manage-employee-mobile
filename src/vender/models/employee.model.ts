@@ -6,7 +6,7 @@ export class EmployeeModel {
     firstNmae: string,
     lastName: string,
     public age: number,
-    public eyeColor: number,
+    public eyeColor: string,
     public email: string,
     public phone: string,
     public address: string,

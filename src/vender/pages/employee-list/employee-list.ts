@@ -8,7 +8,7 @@ import {
 import { EmployeeModel } from "../../models/employee.model";
 import { EditAddPage } from "../edit-add/edit-add";
 import { Subscription } from "rxjs/Subscription";
-import { EmployeeService } from "../../services/employee/employee.service";
+import { EmployeeService } from "../../services/employee.service";
 
 @IonicPage({
   name: "employee-list",
@@ -90,7 +90,6 @@ export class EmployeeListPage implements OnInit, OnDestroy {
   doInfinite(infiniteScroll): void {
     // if (this.employeeService.pageNumber < 2) {
     //   this.employeeService.getNextPage().subscribe((list) => {
-    //     console.log(list);
     //     this.employeeList.push(...list);
     //     infiniteScroll.complete();
     //   });

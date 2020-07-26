@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { EmployeeModel } from "../../models/employee.model";
+import { EmployeeModel } from "../models/employee.model";
 import { Observable } from "rxjs/Observable";
 import { tap, catchError, map, switchMap } from "rxjs/operators";
 import { _throw } from "rxjs/observable/throw";
@@ -69,7 +69,6 @@ export class EmployeeService {
   }
 
   deleteEmployeeById(id: string): void {
-    console.log(id);
     this._list = this._list.filter((value) => {
       return value._id !== id;
     });
