@@ -72,17 +72,26 @@
           </ion-item>
         </ion-col>
         <ion-col col-12 col-lg-6>
-          <!-- <ion-item>
+          <ion-item>
             <ion-label floating>Picture</ion-label>
             <ion-input formControlName="picture" type="text"></ion-input>
-            <button ion-button item-right (click)="onAddPicture()">Add</button>
-          </ion-item> -->
+            <button ion-button icon-only item-right (click)="onAddPicture()">
+              <ion-icon name="camera"></ion-icon>
+            </button>
+          </ion-item>
         </ion-col>
         <ion-col col-12 col-lg-6>
           <ion-item>
             <ion-label floating>Address</ion-label>
             <ion-textarea formControlName="address" row="2"></ion-textarea>
           </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 col-lg-6>
+          <ion-avatar *ngIf="formData.value.picture">
+            <img [src]="formData.value.picture" />
+          </ion-avatar>
         </ion-col>
       </ion-row>
     </ion-grid>

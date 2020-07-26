@@ -44,9 +44,7 @@
       >
         <ion-item #item (tap)="onEdit(employee._id, slidingItem)">
           <ion-avatar item-start>
-            <img
-              src="https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png"
-            />
+            <img [src]="employee.picture" />
           </ion-avatar>
           <h2>{{employee.name.first + ' ' + employee.name.last}}</h2>
           <p><ion-icon name="mail"></ion-icon> {{employee.email |uppercase}}</p>

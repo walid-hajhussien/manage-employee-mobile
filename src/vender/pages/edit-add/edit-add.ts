@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { EmployeeModel } from "../../models/employee.model";
-
+import { Camera, CameraOptions } from "@ionic-native/camera";
 import { EmployeeService } from "../../services/employee.service";
 import { secondNameValidator } from "../../validator/secondName.validatoe";
 
@@ -21,10 +21,12 @@ export class EditAddPage implements OnInit {
   public isClickSave: boolean;
   public formData: FormGroup;
   public employee: EmployeeModel;
+  public imagePath: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private camera: Camera
   ) {
     this.isClickSave = false;
   }
@@ -81,6 +83,7 @@ export class EditAddPage implements OnInit {
     this.employee.phone = values.phone;
     this.employee.address = values.address;
     this.employee.about = values.about;
+    this.employee.picture = values.picture;
 
     if (this.mode === "New") {
       this.employeeService.addEmployee(this.employee);
@@ -89,5 +92,28 @@ export class EditAddPage implements OnInit {
     }
 
     this.navCtrl.pop();
+  }
+
+  // camera
+  onAddPicture() {
+    const options: CameraOptions = {
+      quality: 50, // picture quality
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+    };
+
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        console.log(imageData);
+        this.employee.picture = "data:image/jpeg;base64," + imageData;
+        this.formData.patchValue({
+          picture: this.employee.picture,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

@@ -5,7 +5,7 @@
     "guid": "72f5559b-ae61-4cda-840c-d5432a679d60",
     "isActive": true,
     "balance": "$2,336.48",
-    "picture": "http://placehold.it/32x32",
+    "picture": "https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png",
     "age": 27,
     "eyeColor": "brown",
     "name": {
@@ -30,7 +30,7 @@
     "guid": "0ae609cc-b7ef-417a-ba79-c7b80ad9bf56",
     "isActive": true,
     "balance": "$2,967.98",
-    "picture": "http://placehold.it/32x32",
+    "picture": "https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png",
     "age": 23,
     "eyeColor": "green",
     "name": {
@@ -55,7 +55,7 @@
     "guid": "ac2e94a8-bed2-465d-b608-b17156a2a5fe",
     "isActive": true,
     "balance": "$3,182.52",
-    "picture": "http://placehold.it/32x32",
+    "picture": "https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png",
     "age": 34,
     "eyeColor": "green",
     "name": {
@@ -80,7 +80,7 @@
     "guid": "4f43b597-7fdf-4aa9-a442-35843f5cfc5d",
     "isActive": false,
     "balance": "$2,581.49",
-    "picture": "http://placehold.it/32x32",
+    "picture": "https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png",
     "age": 38,
     "eyeColor": "blue",
     "name": {
@@ -105,7 +105,7 @@
     "guid": "b3e63680-7032-4329-9520-a05280747210",
     "isActive": false,
     "balance": "$2,956.49",
-    "picture": "http://placehold.it/32x32",
+    "picture": "https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png",
     "age": 20,
     "eyeColor": "blue",
     "name": {
@@ -130,7 +130,7 @@
     "guid": "07bf82d1-32ce-4bd1-b84b-9fa5c77cb220",
     "isActive": false,
     "balance": "$1,296.10",
-    "picture": "http://placehold.it/32x32",
+    "picture": "https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png",
     "age": 29,
     "eyeColor": "blue",
     "name": {
@@ -155,7 +155,7 @@
     "guid": "73190165-e7f1-4681-98d8-2a733c2a6515",
     "isActive": false,
     "balance": "$3,232.21",
-    "picture": "http://placehold.it/32x32",
+    "picture": "https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png",
     "age": 27,
     "eyeColor": "blue",
     "name": {
@@ -180,7 +180,7 @@
     "guid": "6e8e6fdd-a587-44d1-9be5-d9a00d9be960",
     "isActive": true,
     "balance": "$2,633.04",
-    "picture": "http://placehold.it/32x32",
+    "picture": "https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png",
     "age": 39,
     "eyeColor": "blue",
     "name": {

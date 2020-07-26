@@ -6,6 +6,7 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { MyApp } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { EmployeeService } from "../vender/services/employee.service";
+import { Camera } from "@ionic-native/camera";
 
 @NgModule({
   declarations: [MyApp],
@@ -17,6 +18,7 @@ import { EmployeeService } from "../vender/services/employee.service";
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     EmployeeService,
+    Camera,
   ],
 })
 export class AppModule {}
