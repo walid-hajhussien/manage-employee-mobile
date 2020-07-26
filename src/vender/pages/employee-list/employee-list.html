@@ -18,83 +18,15 @@
       refreshingText="Refreshing..."
     ></ion-refresher-content>
   </ion-refresher>
+
   <ion-grid>
-    <ion-row>
-      <ion-col col-12 col-lg-8 offset-lg-2>
-        <ion-searchbar
-          placeholder="Address...."
-          (ionInput)="onSearch($event)"
-          [(ngModel)]="search"
-        ></ion-searchbar>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-2>
-        <ion-list *ngIf="sortByColumn!==''">
-          <ion-item>
-            <ion-icon
-              [name]="(orderBy==='asc')?'arrow-round-up':'arrow-round-down'"
-              (click)="onOrder()"
-            >
-            </ion-icon>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-      <ion-col col-10>
-        <ion-list>
-          <ion-item>
-            <ion-label> Order By</ion-label>
-            <ion-select [(ngModel)]="sortByColumn">
-              <ion-option value="name">Name</ion-option>
-              <ion-option value="phone">Phone</ion-option>
-              <ion-option value="email">Email</ion-option>
-              <ion-option value="address">Address</ion-option>
-              <ion-option value="">Manual</ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-      <ion-col col-12 col-lg-8 offset-lg-2>
-        <ion-list
-          [reorder]="sortByColumn===''"
-          (ionItemReorder)="reorderItems($event)"
-        >
-          <ion-item-sliding
-            #slidingItem
-            *ngFor="let employee of employeeList | sortBy:sortByColumn:orderBy; let i = index"
-          >
-            <ion-item #item (tap)="onEdit(employee._id, slidingItem)">
-              <ion-avatar item-start>
-                <img
-                  src="https://cdn1.iconfinder.com/data/icons/avatar-3/512/Manager-512.png"
-                />
-              </ion-avatar>
-              <h2>{{employee.name.first + ' ' + employee.name.last}}</h2>
-              <p>
-                <ion-icon name="mail"></ion-icon> {{employee.email |uppercase}}
-              </p>
-              <p><ion-icon name="call"></ion-icon> {{employee.phone}}</p>
-              <p>
-                <ion-icon name="navigate"></ion-icon>
-                {{employee.address}}
-              </p>
-            </ion-item>
-            <ion-item-options side="right">
-              <button
-                ion-button
-                expandable
-                color="danger"
-                (tap)="onDelete(employee._id)"
-              >
-                <ion-icon name="trash"></ion-icon>
-              </button>
-            </ion-item-options>
-          </ion-item-sliding>
-        </ion-list>
-        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-          <ion-infinite-scroll-content></ion-infinite-scroll-content>
-        </ion-infinite-scroll>
-      </ion-col>
-    </ion-row>
+    <list
+      [listValue]="employeeList"
+      (editList)="onEdit($event)"
+      (deleteList)="onDelete($event)"
+    ></list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </ion-grid>
 </ion-content>
